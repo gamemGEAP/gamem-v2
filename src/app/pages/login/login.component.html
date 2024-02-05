@@ -1,0 +1,27 @@
+<body>
+  <div class="fundo-azul centro">
+    <img src="assets/logo-login.svg" alt="logo">
+  </div>
+
+  <div class="content-login">
+    <div class="login">
+      <h1>Entrar</h1>
+      <form (ngSubmit)="submit()" [formGroup]="formModel" #formDir="ngForm" class="form" (change)="teste()">
+
+        <div class="form-group">
+          <label for="userName">Usuário</label>
+          <input type="text" pInputText placeholder="Digite aqui o seu usuário" formControlName="userName" />
+        </div>
+
+        <div class="form-group">
+          <label for="userName">Senha</label>
+          <input type="text" pInputText placeholder="Digite sua senha" formControlName="password" />
+        </div>
+
+        <p-button type="submit" label="Login"></p-button>
+
+      </form>
+    </div>
+  </div>
+
+</body>
