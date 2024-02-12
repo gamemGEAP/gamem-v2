@@ -6,15 +6,14 @@ import { LoginResponse } from '../dto/login-response';
 import { LoginRequest } from '../dto/login-request';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  private url = `${environment.api}/login`;
 
-  private url = `${environment.api}/login`
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient : HttpClient) { }
-
-  public login(login : LoginRequest) : Observable<LoginResponse>{
+  public login(login: LoginRequest): Observable<LoginResponse> {
     return this.httpClient.post<LoginResponse>(`${this.url}/auth`, login);
   }
 }

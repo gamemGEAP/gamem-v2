@@ -1,23 +1,23 @@
-body{
+body {
   height: 100vh;
 }
 
-.fundo-azul{
+.fundo-azul {
   width: 50%;
   height: 100vh;
   background: var(--fundo-login);
   position: fixed;
 }
 
-.content-login{
+.content-login {
   margin-left: 50%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  .login{
-    h1{
+  .login {
+    h1 {
       margin-bottom: 40px;
     }
 
