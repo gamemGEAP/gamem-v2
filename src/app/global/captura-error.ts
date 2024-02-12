@@ -8,8 +8,6 @@ export class CapturaError implements ErrorHandler {
 
   handleError(error: any): void {
     const erro = error.error;
-    console.log('dentros');
-    console.log(error);
 
     switch (erro.status) {
       case HttpStatusCode.BadRequest:

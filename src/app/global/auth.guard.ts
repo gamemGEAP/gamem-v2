@@ -7,25 +7,17 @@ const tokenExpirado = (token: any) => {
   const dataAtual: Date = new Date();
   const dataExpiracao = new Date(tokenDecode.exp * 1000);
 
-  if (dataAtual > dataExpiracao) {
-    return true;
-  }
-
-  return false;
+  return dataAtual > dataExpiracao;
 };
 
 export const authGuard: CanActivateFn = (route, state) => {
   const token = localStorage.getItem('token');
   const router = inject(Router);
 
-  if (token) {
-    if (tokenExpirado(token)) {
-      localStorage.removeItem('token');
-      router.navigate(['/login']);
-    }
-    return true;
-  } else {
+  if (!token || tokenExpirado(token)) {
+    localStorage.removeItem('token');
     router.navigate(['/login']);
     return false;
   }
+  return true;
 };

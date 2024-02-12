@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -29,6 +29,7 @@ import { Toast } from 'src/app/global/toast';
 export class LoginComponent {
   formModel: FormGroup;
   submetido: boolean = false;
+  desabilitaBotao : boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,8 +38,8 @@ export class LoginComponent {
     private router: Router
   ) {
     this.formModel = this.formBuilder.group({
-      userName: ['gamem', Validators.required],
-      password: ['123456', Validators.required],
+      userName: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
@@ -46,6 +47,7 @@ export class LoginComponent {
     this.submetido = true;
     if (this.formModel.valid) {
       this.loginService.login(this.formModel.value).subscribe((login) => {
+        this.desabilitaBotao = true;
         localStorage.setItem('token', login.token);
         this.router.navigate(['/gamem']);
         this.toast.sucess('Logado com sucesso', 'Bem vindo ao Gamem');

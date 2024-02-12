@@ -8,35 +8,29 @@ export class Toast {
   constructor(private messageService: MessageService) {}
 
   sucess(titulo?: string, mensagem?: string, tempoCustomizado?: number) {
-    this.messageService.add({
-      severity: 'success',
-      summary: titulo,
-      detail: mensagem,
-      life: tempoCustomizado != null ? tempoCustomizado : Toast.LIFE,
-    });
+    this.chamadaToast('success', titulo, mensagem, tempoCustomizado);
   }
 
   info(titulo?: string, mensagem?: string, tempoCustomizado?: number) {
-    this.messageService.add({
-      severity: 'info',
-      summary: titulo,
-      detail: mensagem,
-      life: tempoCustomizado != null ? tempoCustomizado : Toast.LIFE,
-    });
+    this.chamadaToast('info', titulo, mensagem, tempoCustomizado);
   }
 
   warn(titulo?: string, mensagem?: string, tempoCustomizado?: number) {
-    this.messageService.add({
-      severity: 'warn',
-      summary: titulo,
-      detail: mensagem,
-      life: tempoCustomizado != null ? tempoCustomizado : Toast.LIFE,
-    });
+    this.chamadaToast('warn', titulo, mensagem, tempoCustomizado);
   }
 
   error(titulo?: string, mensagem?: string, tempoCustomizado?: number) {
+    this.chamadaToast('error', titulo, mensagem, tempoCustomizado);
+  }
+
+  private chamadaToast(
+    tipo: string,
+    titulo?: string,
+    mensagem?: string,
+    tempoCustomizado?: number
+  ) {
     this.messageService.add({
-      severity: 'error',
+      severity: tipo,
       summary: titulo,
       detail: mensagem,
       life: tempoCustomizado != null ? tempoCustomizado : Toast.LIFE,
