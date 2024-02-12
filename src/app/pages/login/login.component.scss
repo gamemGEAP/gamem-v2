@@ -7,6 +7,10 @@ body {
   height: 100vh;
   background: var(--fundo-login);
   position: fixed;
+
+  img {
+    width: 80%;
+  }
 }
 
 .content-login {
@@ -23,4 +27,33 @@ body {
 
     width: 65%;
   }
+}
+
+@media screen and (max-width : 768px) {
+
+  body {
+    .content-login{
+      margin-left: 0;
+      height: auto;
+      width: 100%;
+
+      .login{
+        width: 100%;
+      }
+    }
+
+    .fundo-azul {
+      background: none;
+      height: auto;
+      width: 100%;
+      margin-bottom: 60px;
+      position: relative;
+
+      img{
+        padding-top: 70px;
+        width: 40%;
+      }
+    }
+  }
+
 }
