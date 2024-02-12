@@ -33,7 +33,7 @@ export class Toast {
       severity: tipo,
       summary: titulo,
       detail: mensagem,
-      life: tempoCustomizado != null ? tempoCustomizado : Toast.LIFE,
+      life: tempoCustomizado ?? Toast.LIFE
     });
   }
 }
