@@ -5,17 +5,19 @@
 
   <div class="content-login">
     <div class="login">
-      <h1>Entrar</h1>
-      <form (ngSubmit)="submit()" [formGroup]="formModel" #formDir="ngForm" class="form" (change)="teste()">
-
+      <form (ngSubmit)="submit()" [formGroup]="formModel" #formDir="ngForm" class="form">
+        <h1>Entrar</h1>
         <div class="form-group">
           <label for="userName">Usuário</label>
           <input type="text" pInputText placeholder="Digite aqui o seu usuário" formControlName="userName" />
+          <alerta-erro [controle]="formModel.get('userName')" [submetido]="submetido"></alerta-erro>
         </div>
 
         <div class="form-group">
           <label for="userName">Senha</label>
-          <input type="text" pInputText placeholder="Digite sua senha" formControlName="password" />
+          <p-password class="full" [feedback]="false" [toggleMask]="true" placeholder="Digite sua senha"
+            formControlName="password"></p-password>
+          <alerta-erro [controle]="formModel.get('password')" [submetido]="submetido"></alerta-erro>
         </div>
 
         <p-button type="submit" label="Login"></p-button>
