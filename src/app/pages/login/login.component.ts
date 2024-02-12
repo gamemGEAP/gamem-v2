@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -12,6 +12,7 @@ import { PasswordModule } from 'primeng/password';
 import { AlertaErroComponent } from 'src/app/global/components/alerta-erro/alerta-erro.component';
 import { Router } from '@angular/router';
 import { Toast } from 'src/app/global/toast';
+import { tokenExpirado } from 'src/app/global/auth.guard';
 
 @Component({
   standalone: true,
@@ -26,10 +27,10 @@ import { Toast } from 'src/app/global/toast';
     AlertaErroComponent,
   ],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   formModel: FormGroup;
   submetido: boolean = false;
-  desabilitaBotao : boolean = false;
+  desabilitaBotao: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,6 +44,10 @@ export class LoginComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.verificaToken();
+  }
+
   submit() {
     this.submetido = true;
     if (this.formModel.valid) {
@@ -52,6 +57,14 @@ export class LoginComponent {
         this.router.navigate(['/gamem']);
         this.toast.sucess('Logado com sucesso', 'Bem vindo ao Gamem');
       });
+    }
+  }
+
+  verificaToken(){
+    const token = localStorage.getItem('token');
+
+    if(token && !tokenExpirado(token)){
+      this.router.navigate(['/gamem']);
     }
   }
 }

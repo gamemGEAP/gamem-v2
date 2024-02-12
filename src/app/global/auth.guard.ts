@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
-const tokenExpirado = (token: any) => {
+export const tokenExpirado = (token: any) => {
   const tokenDecode: any = jwtDecode(token);
   const dataAtual: Date = new Date();
   const dataExpiracao = new Date(tokenDecode.exp * 1000);
