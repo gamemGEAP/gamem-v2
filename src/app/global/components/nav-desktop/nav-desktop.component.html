@@ -1,0 +1,15 @@
+<nav [ngClass]="navFixed ? 'navFixed' : 'navFloat'">
+  <div class="button">
+    <button pButton pRipple class="rounded p-2 p-ripple" type="button" (click)="toggleNav()">
+      <span class="material-symbols-outlined">push_pin</span>
+    </button>
+  </div>
+  <ul>
+    <li *ngFor="let item of items">
+      <a [href]="item.href">
+        <span class="material-symbols-outlined">{{ item.icon }}</span>
+        <span class="rota">{{ item.rota }}</span>
+      </a>
+    </li>
+  </ul>
+</nav>

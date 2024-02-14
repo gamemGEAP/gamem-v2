@@ -4,7 +4,11 @@ import { GamemComponent } from './gamem.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'gamem', pathMatch: 'full' },
-  { path: 'gamem', component: GamemComponent },
+  {
+    path: 'gamem',
+    component: GamemComponent,
+    children: [],
+  },
 ];
 
 @NgModule({

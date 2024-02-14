@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./gamem.component.scss'],
 })
 export class GamemComponent {
+  public navFixed: boolean = true;
+
   constructor(private router: Router) {}
 
   logout(): void {

@@ -1,1 +1,14 @@
-<p-button label="logout" (click)="logout()"></p-button>
+<body class="flex flex-col">
+  <header class="centro">
+    <img src="../../../assets/imagens/logo-login.svg" alt="logo">
+  </header>
+
+  <section class="flex">
+    <app-nav-desktop class="max-w-[250px]" (newItemEvent)="navFixed = $event"></app-nav-desktop>
+
+    <div class="mt-16 p-8 w-screen h-[calc(100vh-64px)]" [ngClass]="{'ml-[88px]': !navFixed}">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+
+</body>
