@@ -6,9 +6,15 @@
   </div>
   <ul>
     <li *ngFor="let item of items">
-      <a [href]="item.href">
+      <a [routerLink]="[item.rota]">
         <span class="material-symbols-outlined">{{ item.icon }}</span>
-        <span class="rota">{{ item.rota }}</span>
+        <span class="rota">{{ item.nome }}</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/login']" (click)="logout()">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="rota">Sair</span>
       </a>
     </li>
   </ul>

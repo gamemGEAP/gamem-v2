@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 interface Item {
   icon: string;
+  nome: string;
   rota: string;
-  href: string;
 }
 
 @Component({
@@ -11,23 +11,23 @@ interface Item {
   templateUrl: './nav-desktop.component.html',
   styleUrls: ['./nav-desktop.component.scss'],
 })
-export class NavDesktopComponent implements OnInit {
-  public items: Item[] = [];
-  public navFixed: boolean = true;
+export class NavDesktopComponent {
   @Output() newItemEvent = new EventEmitter<boolean>();
-
-  ngOnInit(): void {
-    this.items = [
-      { icon: 'forms_add_on', rota: 'Formulário', href: '/formulario' },
-      { icon: 'group', rota: 'Pacientes', href: '/pacientes' },
-      { icon: 'folder_shared', rota: 'Tratamentos', href: '/tratamentos' },
-      { icon: 'badge', rota: 'Trabalhadores', href: '/trabalhadores' },
-      { icon: 'settings', rota: 'Configurações', href: '/configuracoes' },
-    ];
-  }
+  public navFixed: boolean = true;
+  public items: Item[] = [
+    { icon: 'forms_add_on', nome: 'Formulário', rota: '/gamem/formulario' },
+    { icon: 'group', nome: 'Pacientes', rota: '/gamem/pacientes' },
+    { icon: 'folder_shared', nome: 'Tratamentos', rota: '/gamem/tratamentos' },
+    { icon: 'badge', nome: 'Trabalhadores', rota: '/gamem/trabalhadores' },
+    { icon: 'settings', nome: 'Configurações', rota: '/gamem/configuracoes' },
+  ];
 
   toggleNav(): void {
     this.navFixed = !this.navFixed;
     this.newItemEvent.emit(this.navFixed);
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
   }
 }

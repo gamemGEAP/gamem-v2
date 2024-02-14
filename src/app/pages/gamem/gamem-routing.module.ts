@@ -7,7 +7,6 @@ const routes: Routes = [
   {
     path: 'gamem',
     component: GamemComponent,
-    children: [],
   },
 ];
 

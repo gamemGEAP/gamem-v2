@@ -18,7 +18,8 @@ body {
   --fonte-escura: #5a5a5f;
   --fonte-clara: #9e9e9e;
   --altura-header: 64px;
-  --largura-nav: 120px;
+  --largura-nav-contraida: 88px;
+  --largura-nav-expandida: 250px;
 }
 
 .centro {
@@ -44,7 +45,6 @@ label {
 input {
   height: 45px;
   padding-left: 10px;
-  border: 1px solid gray;
 }
 
 input::placeholder {
