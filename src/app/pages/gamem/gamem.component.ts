@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gamem',
@@ -7,10 +6,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./gamem.component.scss'],
 })
 export class GamemComponent {
-  constructor(private router: Router) {}
+  public navFixed: boolean = true;
 
-  logout(): void {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
-  }
+  constructor() {}
 }

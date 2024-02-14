@@ -1,0 +1,21 @@
+<nav [ngClass]="navFixed ? 'navFixed' : 'navFloat'">
+  <div class="button">
+    <button pButton pRipple class="rounded p-2 p-ripple" type="button" (click)="toggleNav()">
+      <span class="material-symbols-outlined">push_pin</span>
+    </button>
+  </div>
+  <ul>
+    <li *ngFor="let item of items">
+      <a [routerLink]="[item.rota]">
+        <span class="material-symbols-outlined">{{ item.icon }}</span>
+        <span class="rota">{{ item.nome }}</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/login']" (click)="logout()">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="rota">Sair</span>
+      </a>
+    </li>
+  </ul>
+</nav>

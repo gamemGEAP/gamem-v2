@@ -1,0 +1,15 @@
+body {
+  height: 100vh;
+  header {
+    background-color: rgb(0, 255, 68);
+    height: var(--altura-header);
+    width: 100%;
+    border-bottom: 1px solid red;
+    position: fixed;
+    z-index: -100;
+    img {
+      height: 64px;
+      padding: 7px 0 7px 0;
+    }
+  }
+}

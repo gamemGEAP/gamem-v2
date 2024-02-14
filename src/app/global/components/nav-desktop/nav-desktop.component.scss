@@ -1,0 +1,119 @@
+nav.navFloat {
+  position: absolute;
+  background-color: rgb(192, 192, 192);
+  z-index: 100;
+  height: 100vh;
+  max-width: var(--largura-nav-expandida);
+  animation: contrair 500ms ease-in-out 1;
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+      a {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        gap: 0.5rem;
+        color: rgb(30, 0, 255);
+        &:hover {
+          color: rgb(94, 255, 0);
+          background-color: red;
+        }
+        &:active {
+          color: rgb(68, 186, 0);
+          background-color: rgb(187, 0, 0);
+        }
+      }
+    }
+  }
+
+  .rota,
+  .button {
+    display: none;
+  }
+
+  &:hover {
+    .rota,
+    .button {
+      display: inherit;
+      animation: expandir 500ms ease-in-out 1 forwards;
+    }
+  }
+}
+
+nav.navFixed {
+  position: block;
+  background-color: rgb(192, 192, 192);
+  z-index: 100;
+  height: 100vh;
+  width: var(--largura-nav-expandida);
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+      a {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        gap: 0.5rem;
+        color: rgb(30, 0, 255);
+        &:hover {
+          color: rgb(94, 255, 0);
+          background-color: red;
+        }
+        &:active {
+          color: rgb(68, 186, 0);
+          background-color: rgb(187, 0, 0);
+        }
+      }
+    }
+  }
+}
+
+.button {
+  position: relative;
+  width: 100%;
+  button {
+    position: absolute;
+    top: 10px;
+    right: 5%;
+  }
+}
+
+@keyframes expandir {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    width: var(--largura-nav-expandida);
+  }
+}
+
+@keyframes contrair {
+  from {
+    width: var(--largura-nav-expandida);
+  }
+
+  to {
+    width: var(--largura-nav-contraida);
+  }
+}
