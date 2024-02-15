@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CapturaError } from './global/captura-error';
-import { Toast } from './global/toast';
+import { ToastCustom } from './global/toast-custom';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +22,7 @@ import { Toast } from './global/toast';
   providers: [
     MessageService,
     { provide: ErrorHandler, useClass: CapturaError },
-    Toast,
+    ToastCustom,
   ],
   bootstrap: [AppComponent],
 })

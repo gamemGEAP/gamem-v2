@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
 @Injectable()
-export class Toast {
+export class ToastCustom {
   static LIFE: number = 3000;
 
   constructor(private messageService: MessageService) {}
@@ -33,7 +33,7 @@ export class Toast {
       severity: tipo,
       summary: titulo,
       detail: mensagem,
-      life: tempoCustomizado ?? Toast.LIFE
+      life: tempoCustomizado ?? ToastCustom.LIFE
     });
   }
 }

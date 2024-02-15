@@ -11,7 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { PasswordModule } from 'primeng/password';
 import { AlertaErroComponent } from 'src/app/global/components/alerta-erro/alerta-erro.component';
 import { Router } from '@angular/router';
-import { Toast } from 'src/app/global/toast';
+import { ToastCustom } from 'src/app/global/toast-custom';
 import { tokenExpirado } from 'src/app/global/auth.guard';
 
 @Component({
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private toast: Toast,
+    private toast: ToastCustom,
     private router: Router
   ) {
     this.formModel = this.formBuilder.group({
