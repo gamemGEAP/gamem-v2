@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { ConfirmDialogCustom } from './../../confirm-dialog';
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Toast } from '../../toast';
+import { ToastCustom } from '../../toast-custom';
 
 interface Item {
   icon: string;
@@ -28,7 +28,7 @@ export class NavDesktopComponent {
   constructor(
     private confirmDialog: ConfirmDialogCustom,
     private router: Router,
-    private toast: Toast
+    private toast: ToastCustom
   ) {}
 
   toggleNav(): void {
