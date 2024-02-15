@@ -1,4 +1,7 @@
+import { Router } from '@angular/router';
+import { ConfirmDialogCustom } from './../../confirm-dialog';
 import { Component, Output, EventEmitter } from '@angular/core';
+import { Toast } from '../../toast';
 
 interface Item {
   icon: string;
@@ -22,12 +25,26 @@ export class NavDesktopComponent {
     { icon: 'settings', nome: 'Configurações', rota: '/gamem/configuracoes' },
   ];
 
+  constructor(
+    private confirmDialog: ConfirmDialogCustom,
+    private router: Router,
+    private toast: Toast
+  ) {}
+
   toggleNav(): void {
     this.navFixed = !this.navFixed;
     this.newItemEvent.emit(this.navFixed);
   }
 
   logout(): void {
-    localStorage.removeItem('token');
+    this.confirmDialog
+      .abrirDialog({ mensagem: 'Tem certeza que deseja sair do GAMEM?' })
+      .subscribe((resp) => {
+        if (resp) {
+          localStorage.removeItem('token');
+          this.router.navigate(['/login']);
+          this.toast.info('Desconectado', 'Você saiu do GAMEM');
+        }
+      });
   }
 }
