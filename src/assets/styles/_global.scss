@@ -90,13 +90,3 @@ input::placeholder {
     width: 100%;
   }
 }
-
-.p-confirm-dialog{
-  width: 50%;
-}
-
-@media screen and (max-width : 768px) {
-  .p-confirm-dialog{
-    width: 90%;
-  }
-}
