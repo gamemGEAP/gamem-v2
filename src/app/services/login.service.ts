@@ -9,7 +9,7 @@ import { LoginRequest } from '../dto/login-request';
   providedIn: 'root',
 })
 export class LoginService {
-  private url = `${environment.api}/login`;
+  private url = `${environment.api}/user`;
 
   constructor(private httpClient: HttpClient) {}
 
