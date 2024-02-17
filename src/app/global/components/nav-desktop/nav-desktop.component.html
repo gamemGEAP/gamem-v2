@@ -1,4 +1,9 @@
-<nav [ngClass]="navFixed ? 'navFixed' : 'navFloat'">
+<header
+  class="hidden md:flex justify-center items-center w-full fixed z-[-100] h-[var(--altura-header)] bg-blue-200 drop-shadow-lg">
+  <img class="h-16 py-2" src="assets/imagens/logo-login.svg" alt="logo">
+</header>
+
+<nav [ngClass]="navFixed ? 'navFixed' : 'navFloat'" class="drop-shadow-lg">
   <div class="button">
     <button pButton pRipple class="rounded p-2 p-ripple" type="button" (click)="toggleNav()">
       <span class="material-symbols-outlined">push_pin</span>
@@ -6,13 +11,13 @@
   </div>
   <ul>
     <li *ngFor="let item of items">
-      <a [routerLink]="[item.rota]">
+      <a [routerLink]="[item.rota]" [routerLinkActive]="['bg-black']">
         <span class="material-symbols-outlined">{{ item.icon }}</span>
         <span class="rota">{{ item.nome }}</span>
       </a>
     </li>
     <li style="border-top: 1px solid blue;">
-      <a (click)="logout()">
+      <a (click)="onLogout()">
         <span class="material-symbols-outlined">logout</span>
         <span class="rota">Sair</span>
       </a>

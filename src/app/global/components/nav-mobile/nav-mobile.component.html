@@ -1,0 +1,23 @@
+<header class="flex justify-between items-center h-16">
+  <img class="h-16 py-2 pl-4" src="assets/imagens/logo-login.svg" alt="logo">
+  <p-button class="pr-4" icon="pi pi-bars" (onClick)="sidebarVisible = true"></p-button>
+</header>
+
+<p-sidebar [(visible)]="sidebarVisible" [blockScroll]="true" position="right">
+  <nav>
+    <ul>
+      <li *ngFor="let item of items">
+        <a [routerLink]="[item.rota]" [routerLinkActive]="['bg-black']" (click)="sidebarVisible = false">
+          <span class="material-symbols-outlined">{{ item.icon }}</span>
+          <span class="rota">{{ item.nome }}</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="onLogout()">
+          <span class="material-symbols-outlined">logout</span>
+          <span class="rota">Sair</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</p-sidebar>
