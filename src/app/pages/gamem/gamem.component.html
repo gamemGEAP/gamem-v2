@@ -1,15 +1,15 @@
-<body class="flex flex-col">
-  <header class="centro">
-    <img src="assets/imagens/logo-login.svg" alt="logo">
-  </header>
+<body class="flex flex-col md:flex-row">
+  <div *ngIf="getScreenWidth < 768; then mobile else desktop"></div>
+  <ng-template #mobile class="w-full">
+    <app-nav-mobile [items]="items" (logout)="logout()"></app-nav-mobile>
+  </ng-template>
+  <ng-template #desktop class="w-full">
+    <app-nav-desktop [items]="items" (logout)="logout()" class="max-w-[250px]"
+      (newItemEvent)="navFixed = $event"></app-nav-desktop>
+  </ng-template>
 
-  <section class="flex">
-    <app-nav-desktop class="max-w-[250px]" (newItemEvent)="navFixed = $event"></app-nav-desktop>
-
-    <div class="mt-16 p-8 w-screen h-[calc(100vh-64px)]" [ngClass]="{'ml-[88px]': !navFixed}">
-      <router-outlet></router-outlet>
-    </div>
-  </section>
-
+  <div class="md:mt-16 p-8 w-screen h-[calc(100vh-64px)]" [ngClass]="{'md:ml-[88px]': !navFixed}">
+    <router-outlet></router-outlet>
+  </div>
 </body>
 <p-confirmDialog [breakpoints]="{'768px': '90%'}" [style]="{width: '50%'}"></p-confirmDialog>
