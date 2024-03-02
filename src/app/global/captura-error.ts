@@ -9,6 +9,8 @@ export class CapturaError implements ErrorHandler {
   handleError(error: any): void {
     const erro = error.error;
 
+    if(!erro) return;
+
     switch (erro.status) {
       case HttpStatusCode.BadRequest:
         this.ngZone.run(() => {
