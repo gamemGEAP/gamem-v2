@@ -1,0 +1,12 @@
+.pi-trash{
+  font-size: 1.5em;
+  color: red;
+}
+
+td, i{
+  cursor: pointer;
+}
+
+tr:active{
+  background-color: var(--fonte-clara);
+}

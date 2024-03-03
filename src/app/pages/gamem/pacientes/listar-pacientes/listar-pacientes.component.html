@@ -1,1 +1,11 @@
-<p>listar-pacientes works!</p>
+<body>
+
+  <table-custom
+    [colunas]="['Nome', 'Telefone']"
+    [dados]="['name', 'phone']" #tabela
+    (onPageChange)="pageChange($event)"
+    (onExcluir)="excluirPaciente($event)"
+    (onBusca)="buscaPaciente($event)">
+  </table-custom>
+
+</body>
