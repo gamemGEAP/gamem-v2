@@ -1,1 +1,85 @@
-<p>criar-atendimento works!</p>
+<div class="p-4">
+  <form (ngSubmit)="submit()" [formGroup]="formModel" #formDir="ngForm" class="flex flex-col gap-5">
+    <div class="flex flex-wrap gap-y-4 gap-x-4">
+      <div class="flex items-center gap-4">
+        <label for="firstTime">1° vez</label>
+        <p-checkbox (onChange)="toggleFirstTime()" formControlName="firstTime" value="true" inputId="firstTime"
+          [binary]="true"></p-checkbox>
+        <alerta-erro [controle]="formModel.get('firstTime')" [submetido]="submetido"></alerta-erro>
+      </div>
+      <div class="form-group">
+        <label for="treatmentType">Atendente Fraterno</label>
+        <p-dropdown formControlName="attendantName" [options]="atendentesLista"
+          placeholder="Selecione o Atendente"></p-dropdown>
+        <alerta-erro [controle]="formModel.get('attendantName')" [submetido]="submetido"></alerta-erro>
+      </div>
+    </div>
+    <div *ngIf="formModel.get('firstTime')?.value; else notFirstTime" class="flex flex-wrap gap-y-4 gap-x-4">
+      <div class="form-group">
+        <label for="patientName">Nome</label>
+        <input class="max-w-[320px]" pInputText formControlName="patientName" placeholder="Nome" />
+        <alerta-erro [controle]="formModel.get('patientName')" [submetido]="submetido"></alerta-erro>
+      </div>
+      <div class="form-group">
+        <label for="patientPhone">Telefone</label>
+        <p-inputMask class="max-w-[320px]" formControlName="patientPhone" placeholder="Telefone" mask="(99) 9 9999-9999"
+          placeholder="(99) 9 9999-9999" />
+        <alerta-erro [controle]="formModel.get('patientPhone')" [submetido]="submetido"></alerta-erro>
+      </div>
+      <div class="form-group">
+        <label for="patientYearsOld">Idade</label>
+        <p-inputNumber class="max-w-[320px]" formControlName="patientYearsOld" placeholder="Idade" [min]="0"
+          [max]="100" />
+        <alerta-erro [controle]="formModel.get('patientYearsOld')" [submetido]="submetido"></alerta-erro>
+      </div>
+    </div>
+    <ng-template #notFirstTime>
+      <div class="form-group">
+        <label for="patientName">Nome</label>
+        <p-dropdown formControlName="patientName" [options]="pacientesLista" optionLabel="name" optionValue="name"
+          [filter]="true" filterBy="name" [showClear]="true" filterMatchMode="startsWith"
+          placeholder="Selecione o paciente" emptyMessage="Não há paciente" emptyFilterMessage="Não há paciente"
+          filterPlaceholder="Digite o nome" [resetFilterOnHide]="true" (onChange)="buscaMotivosTratamento()">
+          <ng-template pTemplate="selectedItem" *ngIf="this.formModel.get('patientName')?.value">
+            <div class="flex align-items-center gap-2">
+              <div>{{ this.formModel.get('patientName')?.value }}</div>
+            </div>
+          </ng-template>
+          <ng-template let-patient pTemplate="item">
+            <div class="flex align-items-center gap-2">
+              <div>{{ patient.name }}</div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+        <alerta-erro [controle]="formModel.get('patientName')" [submetido]="submetido"></alerta-erro>
+      </div>
+    </ng-template>
+    <div class="form-group">
+      <label for="treatmentType">Motivo do tratamento</label>
+      <div class="flex flex-wrap gap-y-4 gap-x-4">
+        <div *ngFor="let motivo of motivosLista">
+          <input class="w-full max-w-[320px]" pInputText [formControlName]="motivo.name" [placeholder]="motivo.value" />
+        </div>
+      </div>
+      <alerta-erro [controle]="formModel.get('reason1')" [submetido]="submetido"></alerta-erro>
+    </div>
+    <div class="form-group">
+      <label for="treatmentType">Tipo de tratamento</label>
+      <div class="flex gap-4">
+        <div *ngFor="let tratamento of tratamentosLista">
+          <p-radioButton [inputId]="tratamento" [value]="tratamento" formControlName="treatmentType"></p-radioButton>
+          <label [for]="tratamento" class="ml-2">{{ tratamento }}</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="treatmentType">Queixas e sintomas</label>
+      <textarea rows="3" pInputTextarea formControlName="symptoms"
+        placeholder="Digite aqui as queixas e os sintomas"></textarea>
+      <alerta-erro [controle]="formModel.get('symptoms')" [submetido]="submetido"></alerta-erro>
+    </div>
+    <div class="mt-2">
+      <p-button [disabled]="desabilitaBotao" type="submit" label="Enviar formulário" icon="pi pi-send"></p-button>
+    </div>
+  </form>
+</div>
