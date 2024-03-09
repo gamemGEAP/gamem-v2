@@ -8,7 +8,7 @@
       (newItemEvent)="navFixed = $event"></app-nav-desktop>
   </ng-template>
 
-  <div class="md:mt-16 p-8 w-screen h-[calc(100vh-64px)]" [ngClass]="{'md:ml-[88px]': !navFixed}">
+  <div class="md:mt-16 sm:p-4 w-screen h-[calc(100vh-64px)]" [ngClass]="{'md:ml-[88px]': !navFixed}">
     <router-outlet></router-outlet>
   </div>
 </body>
