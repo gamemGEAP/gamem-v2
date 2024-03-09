@@ -1,0 +1,40 @@
+<body>
+  <p-button [routerLink]="'/gamem/pacientes'" [outlined]="true" [rounded]="true" icon="pi pi-arrow-left" label="Voltar"
+    severity="secondary"></p-button>
+
+  <form class="form" [formGroup]="formModel">
+
+    <div class="form-group pt-6">
+      <label>Nome</label>
+      <input type="text" pInputText formControlName="name" />
+    </div>
+
+    <div class="form-group">
+      <label>Telefone</label>
+      <input type="text" pInputText formControlName="phone" />
+    </div>
+
+    <div class="form-group">
+      <label>Idade</label>
+      <input type="text" pInputText formControlName="yearsOld" />
+    </div>
+
+    <div class="form-group" *ngIf="formModel.get('reason1')?.value">
+      <label>Motivos do tratamento atual</label>
+      <input type="text" pInputText formControlName="reason1" />
+      <input type="text" pInputText formControlName="reason2" *ngIf="formModel.get('reason2')?.value" />
+      <input type="text" pInputText formControlName="reason3" *ngIf="formModel.get('reason3')?.value" />
+      <input type="text" pInputText formControlName="reason4" *ngIf="formModel.get('reason4')?.value" />
+    </div>
+
+  </form>
+
+  <hr class="mt-8 mb-8">
+  <Label *ngIf="formModel.get('archivedTreatments')?.value.length > 0">Tratamentos anteriores</Label>
+
+  <div class="grid grid-cols-1 md:grid-cols-2">
+    <box-tratamento *ngFor="let tratamento of formModel.get('archivedTreatments')?.value"
+      [tratamento]="tratamento"></box-tratamento>
+  </div>
+
+</body>

@@ -1,0 +1,35 @@
+.box {
+  width: 90%;
+  height: auto;
+  border: var(--azul) 1px solid;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.box:hover {
+  background-color: var(--cor-selecao);
+}
+
+.cancelado {
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+  width: 100px;
+  text-align: center;
+}
+
+.concluido {
+  background-color: green;
+  color: white;
+  border-radius: 3px;
+  width: 100px;
+  text-align: center;
+}
+
+span {
+  color: var(--fonte-escura);
+}
+
+label {
+  color: black;
+}

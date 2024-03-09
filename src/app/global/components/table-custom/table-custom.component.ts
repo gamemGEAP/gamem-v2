@@ -23,6 +23,8 @@ export class TableCustomComponent {
   @Output() onPageChange = new EventEmitter();
   @Output() onExcluir = new EventEmitter();
   @Output() onBusca = new EventEmitter();
+  @Output() onEdicao = new EventEmitter();
+
   @Input() colunas: string[] = [];
   @Input() dados: string[] = [];
   protected elementos: any[] = [];
@@ -46,5 +48,9 @@ export class TableCustomComponent {
 
   busca() {
     this.onBusca.emit(this.nomePaciente);
+  }
+
+  edicao(id: number) {
+    this.onEdicao.emit(id);
   }
 }
