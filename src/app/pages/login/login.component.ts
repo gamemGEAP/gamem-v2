@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.formModel.value).subscribe((login) => {
         this.desabilitaBotao = true;
         localStorage.setItem('token', login.token);
+        localStorage.setItem('user', login.username);
         this.router.navigate(['/gamem']);
         this.toast.sucess('Logado com sucesso', 'Bem vindo ao Gamem');
       });

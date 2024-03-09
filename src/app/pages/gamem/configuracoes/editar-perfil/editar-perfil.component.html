@@ -1,1 +1,22 @@
-<p>editar-perfil works!</p>
+<body>
+
+  <form class="form">
+    <h1>Editar Perfil</h1>
+    <div class="form-group">
+      <label>Usuário</label>
+      <span class="p-input-icon-right">
+        <i [routerLink]="'usuario'" class="pi pi-pencil"></i>
+        <input readonly class="w-full" type="text" [placeholder]="user" pInputText />
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>Senha</label>
+      <span class="p-input-icon-right">
+        <i [routerLink]="'senha'" class="pi pi-pencil"></i>
+        <input readonly class="w-full" type="text" [placeholder]="'******'" pInputText />
+      </span>
+    </div>
+
+  </form>
+</body>
