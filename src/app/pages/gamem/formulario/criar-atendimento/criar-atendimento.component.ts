@@ -148,6 +148,7 @@ export class CriarAtendimentoComponent implements OnInit {
     for (let i = 1; i <= 4; i++) {
       this.formModel.get(`reason${i}`)?.reset();
     }
+    this.desabilitaBotao = false;
   }
 
   resetForm() {
