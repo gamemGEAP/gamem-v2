@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { PageTemplate } from '../interfaces/page-template';
+import { Treatment } from '../interfaces/treatment';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +24,18 @@ export class TratamentoService {
   public buscaNomesPacientes(): Observable<Array<string>> {
     return this.httpClient.get<Array<string>>(
       `${this.url}/list-names-in-treatment`
+    );
+  }
+
+  public list(pagina: number): Observable<PageTemplate<Treatment>> {
+    return this.httpClient.get<PageTemplate<Treatment>>(
+      `${this.url}/list/?page=${pagina}&size=10`
+    );
+  }
+
+  public archive(id: number): Observable<any> {
+    return this.httpClient.get<any>(
+      `${this.url}/finalized/?patientId=${id}&status=CANCELED`
     );
   }
 }
