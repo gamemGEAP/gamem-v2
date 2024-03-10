@@ -32,7 +32,7 @@
   <hr class="mt-8 mb-8">
   <Label *ngIf="formModel.get('archivedTreatments')?.value.length > 0">Tratamentos anteriores</Label>
 
-  <div class="grid grid-cols-1 md:grid-cols-2">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <box-tratamento *ngFor="let tratamento of formModel.get('archivedTreatments')?.value"
       [tratamento]="tratamento"></box-tratamento>
   </div>

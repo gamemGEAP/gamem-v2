@@ -67,7 +67,7 @@ export class ListarPacientesComponent implements OnInit {
       .subscribe((m) => this.tabela.setElementos(m));
   }
 
-  eidcao(id: number) {
+  edicao(id: number) {
     this.router.navigate([`/gamem/pacientes/informacoes/${id}`]);
   }
 }

@@ -37,8 +37,8 @@
       <tr>
         <td *ngFor="let dado of dados">{{ elemento[dado] }}</td>
         <td>
-          <i (click)="edicao(elemento.id)" class="pi pi-user-edit"></i>
-          <i (click)="excluir(elemento)" class="pi pi-trash ml-3"></i>
+          <i (click)="edicao(elemento.id)" class="pi pi-user-edit" pTooltip="Editar" tooltipPosition="top"></i>
+          <i (click)="excluir(elemento)" class="pi pi-trash ml-3"  pTooltip="Excluir" tooltipPosition="top"></i>
         </td>
       </tr>
     </ng-template>
