@@ -5,6 +5,7 @@ import { PageTemplate } from 'src/app/interfaces/page-template';
 import { PacienteService } from 'src/app/services/paciente.service';
 import { TableCustomComponent } from 'src/app/global/components/table-custom/table-custom.component';
 import { ToastCustom } from 'src/app/global/toast-custom';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-pacientes',
@@ -22,7 +23,8 @@ export class ListarPacientesComponent implements OnInit {
   constructor(
     private pacienteService: PacienteService,
     private confirmDialog: ConfirmDialogCustom,
-    private toast: ToastCustom
+    private toast: ToastCustom,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -63,5 +65,9 @@ export class ListarPacientesComponent implements OnInit {
     this.pacienteService
       .search(nomePaciente)
       .subscribe((m) => this.tabela.setElementos(m));
+  }
+
+  edicao(id: number) {
+    this.router.navigate([`/gamem/pacientes/informacoes/${id}`]);
   }
 }

@@ -10,11 +10,12 @@ body {
 }
 
 :root {
-  --fundo-login: linear-gradient(
-    67deg,
-    rgba(0, 78, 218, 1) 0%,
-    rgba(33, 150, 243, 1) 100%
-  );
+  --fundo-login: linear-gradient(67deg,
+      rgba(0, 78, 218, 1) 0%,
+      rgba(33, 150, 243, 1) 100%);
+  --azul: #1e8ff1;
+  --cor-selecao: #e9ecef;
+
   --fonte-escura: #5a5a5f;
   --fonte-clara: #9e9e9e;
   --azul: #1e8ff1;

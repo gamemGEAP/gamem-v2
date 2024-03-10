@@ -1,12 +1,20 @@
-.pi-trash{
-  font-size: 1.5em;
+.pi-trash {
   color: red;
 }
 
-td, i{
+.pi-user-edit {
+  color: var(--azul);
+}
+
+td,
+i {
   cursor: pointer;
 }
 
-tr:active{
+i {
+  font-size: 1.5em;
+}
+
+tr:active {
   background-color: var(--fonte-clara);
 }
