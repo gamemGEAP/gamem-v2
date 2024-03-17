@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { FormRequest } from '../dto/form-request';
+import { FormRequest } from '../interfaces/dto/form-request';
 import { Observable } from 'rxjs';
 
 @Injectable({

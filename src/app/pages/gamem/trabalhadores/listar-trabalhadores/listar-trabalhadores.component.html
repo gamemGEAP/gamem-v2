@@ -1,1 +1,10 @@
-<p>listar-trabalhadores works!</p>
+<body>
+  <table-custom
+    #tabela
+    [colunas]="['Nome', 'E-mail', 'Telefone', 'Função']"
+    [dados]="['name', 'email', 'phone', 'function']"
+    (onPageChange)="pageChange($event)"
+    (onExcluir)="excluirTrabalhador($event)"
+  >
+  </table-custom>
+</body>

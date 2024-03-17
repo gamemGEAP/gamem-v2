@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ArchivedTreatments } from 'src/app/dto/archived-treatments';
+import { ArchivedTreatments } from 'src/app/interfaces/dto/archived-treatments';
 
 @Component({
   selector: 'box-tratamento',
