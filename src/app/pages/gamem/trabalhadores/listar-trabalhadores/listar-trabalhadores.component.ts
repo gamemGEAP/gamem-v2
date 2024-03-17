@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TableCustomComponent } from 'src/app/global/components/table-custom/table-custom.component';
 import { ConfirmDialogCustom } from 'src/app/global/confirm-dialog';
 import { ToastCustom } from 'src/app/global/toast-custom';
+import { WorkerListDTO } from 'src/app/interfaces/dto/worker-list-dto';
 import { PageTemplate } from 'src/app/interfaces/page-template';
 import { Worker } from 'src/app/interfaces/worker';
 import { TrabalhadorService } from 'src/app/services/trabalhador.service';
@@ -30,20 +31,12 @@ export class ListarTrabalhadoresComponent implements OnInit {
   }
 
   pageChange(pagina: number) {
-    this.trabalhadorService.list(pagina).subscribe((m) => {
-      const obj: any = m;
-      obj.content.map((trabalhador: any) => {
-        trabalhador.function = trabalhador.function
-          .map((f: any) => {
-            return f.name;
-          })
-          .reduce(
-            (accumulator: any, currentValue: any) =>
-              accumulator + ' ' + currentValue
-          );
-        return trabalhador;
-      });
-      this.tabela.setElementos(obj);
+    this.trabalhadorService.list(pagina).subscribe((workerTemplate) => {
+      const template: PageTemplate<any> = workerTemplate;
+      template.content = template.content.map(
+        (worker) => new WorkerListDTO(worker)
+      );
+      this.tabela.setElementos(template);
       this.paginaAtual = pagina;
     });
   }

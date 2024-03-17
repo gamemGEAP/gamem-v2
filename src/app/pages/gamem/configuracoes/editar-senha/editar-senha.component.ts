@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EditUserRequest } from 'src/app/dto/edit-user-request';
+import { EditUserRequest } from 'src/app/interfaces/dto/edit-user-request';
 import { ConfirmDialogCustom } from 'src/app/global/confirm-dialog';
 import { ToastCustom } from 'src/app/global/toast-custom';
 import { LoginService } from 'src/app/services/login.service';
