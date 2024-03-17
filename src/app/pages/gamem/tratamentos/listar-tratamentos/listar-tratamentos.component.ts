@@ -59,4 +59,17 @@ export class ListarTratamentosComponent implements OnInit {
         }
       });
   }
+
+  buscaTratamento(nomePaciente: string) {
+    if (!nomePaciente) {
+      this.tratamentoService
+        .list(0)
+        .subscribe((m) => this.tabela.setElementos(m));
+      return;
+    }
+
+    this.tratamentoService
+      .search(nomePaciente)
+      .subscribe((m) => this.tabela.setElementos(m));
+  }
 }
